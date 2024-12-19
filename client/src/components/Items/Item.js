@@ -15,14 +15,14 @@ export function Item({ item }) {
         {item.name}
       </div>
       <div className="itemButtons">
-        <div onClick={() => handleDeleteItem(item.id)} style={{ color: "red" }}>
-          <Delete />
+        <div onClick={() => handleDeleteItem(item.id)} style={{ cursor: "pointer" }}>
+          <Delete style={{ fill: "red" }} /> {/* Set fill color for delete icon */}
         </div>
         <div
           onClick={() => handleUpdateItem(item.id)}
-          style={{ color: item.status !== "fulfilled" ? "green" : "grey" }}
+          style={{ cursor: "pointer" }}
         >
-          <Check />
+          <Check style={{ fill: item.status !== "fulfilled" ? "green" : "grey" }} /> {/* Set fill color for check icon */}
         </div>
       </div>
     </div>

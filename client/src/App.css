@@ -1,5 +1,53 @@
+/* Default Light Theme Styles */
+:root {
+  --background: white;
+  --background-nav: #f8f9fa;
+  --container: white;
+  --component: white;
+  --text: black;
+  --green: #0D6943;
+  --red: #CC2A17;
+  --blue: #006DD6;
+  --orange: #E67C0E;
+  --text-secondary: #5B5B5B;
+  --text-white: black;
+  --light-red: #FFE6E6; /* Light red background */
+  --light-purple: #E7E6FF; /* Light purple background */
+}
+
+/* Dark Theme Styles */
+[data-theme='dark'] {
+  --background: #121212; /* Dark background */
+  --background-nav: #1E1E1E; /* Darker navigation background */
+  --container: #282828; /* Dark container */
+  --component: #3F3F3F; /* Dark component background */
+  --text: white; /* Light text color */
+  --green: #0D6943; /* Keep green */
+  --red: #CC2A17; /* Keep red */
+  --blue: #006DD6; /* Keep blue */
+  --orange: #E67C0E; /* Keep orange */
+  --text-secondary: #8C8061; /* Lighter secondary text */
+  --text-white: white; /* White text */
+  --light-red: #282828; /* Darker red for dark theme */
+  --light-purple: #BFA2E7; /* Darker purple for dark theme */
+}
+
+/* General Body Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* App Styles */
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -14,46 +62,46 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--background-nav);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text);
 }
 
 .App-link {
   color: #61dafb;
 }
 
+/* Centered Container */
 .centred {
   display: flex;
   flex-direction: column; /* Or 'row' if you want items side by side */
   align-items: center;
-  justify-content: center;/* Ensures the container takes up the full viewport height */
+  justify-content: center; /* Ensures the container takes up the full viewport height */
 }
 
+/* Control Panel Styles */
 .controlPanel {
   display: flex;
   gap: 6vw; /* Adds space between elements in the control panel */
   align-items: center;
   justify-content: center;
   height: 5vh;
-
-
   position: fixed; /* Ensures the panel stays in place */
   bottom: 0;       /* Aligns the panel to the bottom of the screen */
   left: 0;         /* Aligns the panel to the left edge */
   width: 100%;     /* Makes the panel span the entire width of the screen */
-  background-color: #f8f9fa; /* Example background color */
+  background-color: var(--background-nav); /* Background color */
   padding: 10px;   /* Adds some spacing inside the panel */
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for style */
   z-index: 1000;   /* Keeps the panel above other elements */
 }
 
-
+/* Keyframes for Logo Spin Animation */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -63,6 +111,7 @@
   }
 }
 
+/* Item Container Styles */
 .itemContainer {
   display: flex;
   justify-content: space-between;
@@ -72,31 +121,38 @@
   margin-right: 16px;
 }
 
+/* Item Button Styles */
 .itemButtons {
-  display: flex;
+  display
+  : flex;
   gap: 8px; /* Adds space between the buttons */
   margin-left: auto;
 }
-.detailHeader{
+
+/* Detail Header Styles */
+.detailHeader {
   display: flex;
   gap: 16px;
   justify-content: center;
-  margin:10px auto;
+  margin: 10px auto;
 }
 
-.detailCard{
+/* Detail Card Styles */
+.detailCard {
   border-radius: 16px;
-  margin:0 auto;
+  margin: 0 auto;
   height: 70vh;
-  background-color: #FFE6E6;
+  background-color: var(--light-red); /* Light red background */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.card{  
-  background-color: #E7E6FF;
+.card {
+  background-color: var(--light-purple); /* Light purple background */
   border-radius: 16px;
   height: 5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: relative; /* Enables positioning for child elements */
+  padding: 10px;
 }
 
 .cardList {
@@ -105,28 +161,21 @@
   gap: 10px;
 }
 
-/* For medium screens (tablets) */
+/* Responsive Design for Medium Screens (Tablets) */
 @media (max-width: 768px) {
   .cardList {
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
   }
 }
 
-/* For small screens (mobile devices) */
+/* Responsive Design for Small Screens (Mobile Devices) */
 @media (max-width: 480px) {
   .cardList {
     grid-template-columns: 1fr; /* 1 column */
   }
 }
 
-.card {
-  background-color: #E7E6FF;
-  border-radius: 16px;
-  height: 5rem;
-  position: relative; /* Enables positioning for child elements */
-  padding: 10px;
-}
-
+/* Menu Button Styles */
 .menu-button {
   position: absolute;
   bottom: 10px; /* Adjust distance from the bottom */
@@ -139,6 +188,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
 }
 
+/* Menu Styles */
 .menu {
   position: absolute;
   bottom: -81px; /* Position the menu above the button */
@@ -152,17 +202,19 @@
   z-index: 1000; /* Ensure the menu is above other elements */
 }
 
-.page{
+/* Page Styles */
+.page {
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 16px;
 }
 
-.itemCount{
+/* Item Count Styles */
+.itemCount {
   color: gray;
 }
 
-/* Overall container for items and chart */
+/* Overall Container for Items and Chart */
 .content-container {
   display: flex;
   flex-wrap: wrap; /* Allows content to stack on smaller screens */
@@ -170,20 +222,20 @@
   gap: 16px; /* Adds spacing between items and chart */
 }
 
-/* Item list styling */
+/* Item List Styling */
 .item-list-container {
   flex: 1; /* Takes up equal space */
 }
 
-/* Chart styling */
+/* Chart Styling */
 .chart-container {
   flex: 1; /* Takes up equal space */
-  background-color: #ffe6e6; /* Light red background */
+  background-color: var(--light-red); /* Light red background */
   border-radius: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Responsive design for mobile */
+/* Responsive Design for Mobile */
 @media (max-width: 768px) {
   .content-container {
     flex-direction: column; /* Stacks items vertically */
@@ -193,3 +245,10 @@
     margin-top: 20px; /* Adds spacing between the item list and chart */
   }
 }
+
+/* Dark Mode Styles */
+.App.dark-mode {
+  background-color: #282c34; /* Dark mode background */
+}
+
+/* Additional Dark Mode Styles can be added here */
