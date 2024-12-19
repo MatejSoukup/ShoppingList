@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.centred {
+  display: flex;
+  flex-direction: column; /* Or 'row' if you want items side by side */
+  align-items: center;
+  justify-content: center;/* Ensures the container takes up the full viewport height */
+}
+
+.controlPanel {
+  display: flex;
+  gap: 6vw; /* Adds space between elements in the control panel */
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+
+
+  position: fixed; /* Ensures the panel stays in place */
+  bottom: 0;       /* Aligns the panel to the bottom of the screen */
+  left: 0;         /* Aligns the panel to the left edge */
+  width: 100%;     /* Makes the panel span the entire width of the screen */
+  background-color: #f8f9fa; /* Example background color */
+  padding: 10px;   /* Adds some spacing inside the panel */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for style */
+  z-index: 1000;   /* Keeps the panel above other elements */
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px; /* Optional: add some padding for spacing */
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.itemButtons {
+  display: flex;
+  gap: 8px; /* Adds space between the buttons */
+  margin-left: auto;
+}
+.detailHeader{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin:10px auto;
+}
+
+.detailCard{
+  border-radius: 16px;
+  max-width: 80%;
+  margin:10px auto;
+  height: 70vh;
+  background-color: #FFE6E6;
+}
+
+.card{  
+  background-color: #E7E6FF;
+  border-radius: 16px;
+}
+
+.cardList{
+  display: grid;
+  
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.menu{
+  position: absolute;
+  width: 120px;
+  padding: 8px;
+  border-radius: 16px;
+  background-color: white;
+  border: solid 1px gray;
+}
