@@ -5,7 +5,7 @@ import { ControlPanel } from "../components/Nav/ControlPanelDetail";
 
 export function Detail() {
   return (
-    <div>
+    <div className="page">
       <ShoppingListDetail />
       <ControlPanel />
     </div>

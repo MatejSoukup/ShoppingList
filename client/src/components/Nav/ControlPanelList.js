@@ -7,6 +7,7 @@ import { ReactComponent as Create } from "../../Assets/addCircle.svg";
 
 export function ControlPanel() {
   const [createListModalOpen, setCreateListModalOpen] = useState(false);
+  const [menuOpen , setMenuOpen] = useState(false);
   const openItemModal = () => setCreateListModalOpen(true);
   const closeItemModal = () => setCreateListModalOpen(false);
   const { showArchived, setShowArchived } = useContext(ShoppingListContext);
@@ -20,13 +21,20 @@ export function ControlPanel() {
       <div onClick={() => openItemModal()}>
         <Create />
       </div>
+      <div onClick={() => setMenuOpen(!menuOpen)}>
+          Profile
+        </div>
       <CreateListModal
         isModalOpen={createListModalOpen}
         closeModal={closeItemModal}
       />
+      
         </div>
    
-      <Profile />
+        {
+          menuOpen ?
+        <Profile />: <></>
+        }
     </div>
   );
 }

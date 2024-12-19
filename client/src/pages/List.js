@@ -5,9 +5,9 @@ import { ControlPanel } from "../components/Nav/ControlPanelList";
 
 export function List() {
   return (
-    <>
+    <div className="page">
       <CardList />
       <ControlPanel />
-    </>
+    </div>
   );
 }

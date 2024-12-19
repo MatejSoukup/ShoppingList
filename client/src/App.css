@@ -86,30 +86,110 @@
 
 .detailCard{
   border-radius: 16px;
-  max-width: 80%;
-  margin:10px auto;
+  margin:0 auto;
   height: 70vh;
   background-color: #FFE6E6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .card{  
   background-color: #E7E6FF;
   border-radius: 16px;
+  height: 5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-.cardList{
+.cardList {
   display: grid;
-  
   grid-template-columns: repeat(3, 1fr);
-
   gap: 10px;
 }
 
-.menu{
+/* For medium screens (tablets) */
+@media (max-width: 768px) {
+  .cardList {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* For small screens (mobile devices) */
+@media (max-width: 480px) {
+  .cardList {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+}
+
+.card {
+  background-color: #E7E6FF;
+  border-radius: 16px;
+  height: 5rem;
+  position: relative; /* Enables positioning for child elements */
+  padding: 10px;
+}
+
+.menu-button {
   position: absolute;
+  bottom: 10px; /* Adjust distance from the bottom */
+  right: 10px; /* Adjust distance from the right */
+  padding: 6px 12px; /* Optional: adjust button padding */
+  background-color: #fff; /* Button background color */
+  border: solid 1px gray;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer for interactivity */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Optional: subtle shadow */
+}
+
+.menu {
+  position: absolute;
+  bottom: -81px; /* Position the menu above the button */
+  right: -80px; /* Align with the button horizontally */
   width: 120px;
   padding: 8px;
   border-radius: 16px;
   background-color: white;
   border: solid 1px gray;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for the menu */
+  z-index: 1000; /* Ensure the menu is above other elements */
+}
+
+.page{
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 16px;
+}
+
+.itemCount{
+  color: gray;
+}
+
+/* Overall container for items and chart */
+.content-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows content to stack on smaller screens */
+  justify-content: space-between;
+  gap: 16px; /* Adds spacing between items and chart */
+}
+
+/* Item list styling */
+.item-list-container {
+  flex: 1; /* Takes up equal space */
+}
+
+/* Chart styling */
+.chart-container {
+  flex: 1; /* Takes up equal space */
+  background-color: #ffe6e6; /* Light red background */
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column; /* Stacks items vertically */
+  }
+
+  .chart-container {
+    margin-top: 20px; /* Adds spacing between the item list and chart */
+  }
 }
