@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ShoppingListContext } from "../Providers/ShoppingListProvider";
-import { Menu } from "../Menu/Menu";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 export function Card({ list }) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const { isOwner, handleDelete, setCurrentList, handleArchive } =
     useContext(ShoppingListContext);
+  
+  const { t } = useTranslation(); // Initialize translation function
 
   function reRoute() {
     setCurrentList(list);
@@ -27,12 +29,12 @@ export function Card({ list }) {
     >
       <div className="cardContent">
         <div>{list.name}</div>
-        <div className="itemCount">Items: {list.itemList.length}</div>
+        <div className="itemCount">{t('items')} {list.itemList.length}</div>
       </div>
 
       {isOwner(list) && (
         <>
-          <button className="menu-button" onClick={toggleMenu}>Menu</button>
+          <button className="menu-button" onClick={toggleMenu}>{t('menu')}</button>
           {menuOpen && (
             <div className="menu">
               <ul>
@@ -43,7 +45,7 @@ export function Card({ list }) {
                     setMenuOpen(false);
                   }}
                 >
-                  Delete
+                  {t('delete')}
                 </li>
                 <li
                   onClick={(event) => {
@@ -51,7 +53,7 @@ export function Card({ list }) {
                     handleArchive(list.id);
                   }}
                 >
-                  Archive
+                  {t('archive')}
                 </li>
               </ul>
             </div>

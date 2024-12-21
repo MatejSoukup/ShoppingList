@@ -5,7 +5,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { List } from "./pages/List";
 import UserProvider from "./components/Providers/UserProvider";
 import ShoppingListProvider from "./components/Providers/ShoppingListProvider";
-
+import i18n from './i18n'; // Import the i18n instance
 
 function App() {
   const [darkMode, setDarkMode] = useState(false); // Create dark mode state
@@ -14,21 +14,20 @@ function App() {
     setDarkMode((prevMode) => !prevMode); // Toggle function
   };
 
-  useEffect(() => {
-    // Set the data-theme attribute based on darkMode state
-    if (darkMode) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
-  }, [darkMode]);
+  const handleLanguageChange = (event) => {
+    i18n.changeLanguage(event.target.value); // Change language based on selection
+  };
 
   return (
-    <div className="App"> {/* No need to apply class for dark mode here */}
+    <div className="App">
       <BrowserRouter>
         <UserProvider>
           <ShoppingListProvider>
             <button onClick={() => toggleDarkMode()}>Mode</button>
+            <select onChange={handleLanguageChange} defaultValue={i18n.language}>
+              <option value="en">English</option>
+              <option value="cs">Czech</option>
+            </select>
             <Routes>
               <Route path="/" element={<List />} />
               <Route path="detail/:id" element={<Detail />} />

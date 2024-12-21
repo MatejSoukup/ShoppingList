@@ -76,14 +76,11 @@ export default function ShoppingListProvider({ children }) {
 
   function isOwner(list) {
     // Check if currentList and its owner are defined before accessing id
-    if (!list.owner || !loggedInUser) {
-      console.log(1);
-      return false; // Return false if any are undefined
+    if (!list || !list.owner || !loggedInUser ) {
+        return false; // Return false if any are undefined
     }
-    console.log(loggedInUser.id);
-    // Using optional chaining to safely access owner.id
-    return loggedInUser.id === list.owner.id;
-  }
+    return loggedInUser .id === list.owner.id;
+}
 
   function handleLoadAll() {
     const filteredList = Lists.filter((shoppingList) => {

@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { ShoppingListContext } from '../Providers/ShoppingListProvider';
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
 
 export function AddMemberForm() {
     const [memberEmail, setMemberEmail] = useState('');
     const { handleAddMember } = useContext(ShoppingListContext); // Assuming you have a method to add a member
+    const { t } = useTranslation(); // Initialize translation function
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
@@ -18,7 +20,7 @@ export function AddMemberForm() {
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <label htmlFor="memberEmail">Member Email:</label>
+                <label htmlFor="memberEmail">{t('memberEmail')}:</label> {/* Translated label for Member Email */}
                 <input
                     type="email" // Changing to email type if you're using email to identify members
                     id="memberEmail"
@@ -27,7 +29,7 @@ export function AddMemberForm() {
                     required // Make this field required
                 />
             </div>
-            <button type="submit">Add Member</button>
+            <button type="submit">{t('addMember')}</button> {/* Translated button text for Add Member */}
         </form>
     );
 }

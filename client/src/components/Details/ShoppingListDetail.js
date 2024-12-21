@@ -5,14 +5,16 @@ import { useNavigate } from "react-router-dom";
 import { EditListModal } from "../Modal/EditListModal";
 import { UserContext } from "../Providers/UserProvider";
 import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 export function ShoppingListDetail() {
   const navigate = useNavigate();
-  const { loggedInUser } = useContext(UserContext);
+  const { loggedInUser  } = useContext(UserContext);
   const { currentList, handleLeave, isOwner } = useContext(ShoppingListContext);
+  const { t } = useTranslation(); // Initialize translation function
 
   if (!currentList) {
-    return <p>No additional data provided.</p>;
+    return <p>{t('noDataProvided')}</p>; // Translated message for no data
   }
 
   // Calculate "fulfilled" and "unfulfilled" items
@@ -23,8 +25,8 @@ export function ShoppingListDetail() {
 
   // Data for the PieChart
   const data = [
-    { name: "Fulfilled", value: fulfilledItems },
-    { name: "Unfulfilled", value: unfulfilledItems },
+    { name: t('fulfilled'), value: fulfilledItems }, // Translated label for fulfilled
+    { name: t('unfulfilled'), value: unfulfilledItems }, // Translated label for unfulfilled
   ];
 
   // Colors for the PieChart slices
@@ -37,7 +39,7 @@ export function ShoppingListDetail() {
         {isOwner(currentList) && <EditListModal />}
         {!isOwner(currentList) && (
           <button onClick={() => (handleLeave(), navigate("/"))}>
-            Leave
+            {t('leave')} {/* Translated text for Leave button */}
           </button>
         )}
       </div>
